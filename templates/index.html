@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>配送地址围栏判定 · 演示</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>配送地址围栏判定</h1>
+    <p class="sub">射线法（Ray Casting）点面判定 + 名称相似度召回 · 演示版</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel">
+    <form id="f">
+      <input id="q" name="q" autocomplete="off"
+             placeholder="输入地址，例如：长虹路12号示例大厦A座">
+      <button type="submit">解析</button>
+    </form>
+    <div class="examples">
+      <span>试试：</span>
+      <a href="#" data-q="长虹路12号示例大厦A座">示例大厦A座</a>
+      <a href="#" data-q="南岭路18号南岭小学">南岭小学</a>
+      <a href="#" data-q="西塘街3号西塘菜市场">西塘菜市场</a>
+      <a href="#" data-q="环城北路9号圈外样例仓">圈外样例仓</a>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="panel canvas-box">
+      <canvas id="cv" width="640" height="460"></canvas>
+      <div class="legend" id="legend"></div>
+    </div>
+
+    <div class="panel">
+      <h2>判定结果</h2>
+      <div id="out" class="out"><p class="empty">输入地址后显示结果</p></div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <p>本仓库为作品展示用途，<strong>未开源</strong>，未授予任何使用、修改、分发许可。</p>
+  <p class="tiny">数据为虚构样例，不包含任何真实客户信息或地图服务密钥。</p>
+</footer>
+
+<script id="bootstrap" type="application/json">
+{{ {"fences": fences, "pois": pois} | tojson }}
+</script>
+<script src="/static/app.js"></script>
+</body>
+</html>
